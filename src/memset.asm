@@ -9,8 +9,6 @@ omemset:
 	mov r14, rdi
 
 loop:
-	mov al, [rdi]	; assign cl (register) with the first parameter of the function
-
 	cmp rdx, 0	; compare the two value of the character stocked in the cl and dl register
 	je end		; if the value are different, go to the end, because its an error
 

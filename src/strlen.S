@@ -1,4 +1,4 @@
-	[BITS 64]  ; Obligatoire
+	[BITS 64]  		; Obligatoire
 
 	global ostrlen 		;  initialize the name of the function Obligatoire 
 	section .text 		; set the .text Obligatoire 
