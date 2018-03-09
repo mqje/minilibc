@@ -1,9 +1,9 @@
 	[BITS 64]		; Obligatoire
 
-	global omemcpy  	;  initialize the name of the function Obligatoire
+	global my_memcpy  	;  initialize the name of the function Obligatoire
 	section .text   	; // set the .text Obligatoire
 
-omemcpy:
+my_memcpy:
 	push rbp        ; Initialize stack
 	mov rbp, rsp	; Initialize stack
 	mov r14, rdi
@@ -12,22 +12,15 @@ loop:
 	cmp rdx, 0
 	je end
 
-	cmp rdi, 0
-	je end
-
-	cmp rsi, 0
-	je end
-
 	mov bl, [rsi]
 	mov [rdi], bl
 	
-	sub rdx, 1
+	dec rdx
 	inc rdi
 	inc rsi
-	
 	jmp loop
 
 end:
-	mov rax, r14    ; assign cl to rax
-	leave		; free the stack
-	ret     	; return obligatoire   
+	mov rax, r14
+	leave
+	ret

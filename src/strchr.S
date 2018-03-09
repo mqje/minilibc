@@ -1,9 +1,9 @@
         [BITS 64]               ; Obligatoire
 
-	global ostrchr  ;  initialize the name of the function Obligatoire
+	global my_strchr  ;  initialize the name of the function Obligatoire
 	section .text   ; // set the .text Obligatoire
 
-ostrchr:
+my_strchr:
 	push rbp	; Initialize stack
 	mov rbp, rsp 	; Initialize stack
 
@@ -13,7 +13,7 @@ loop:
 	cmp al, 0       ; compare cl (first) == \0
 	je exit_null	; stop if the compare wor
 
-	cmp al, sil      ; compare the two value of the character stocked in the cl and dl register
+	cmp al, sil     ; compare the two value of the character stocked in the cl and dl register
 	je end		; if the value are different, go to the end, because its an error
 	
 	inc rdi         ; increment rdi (1st operand)

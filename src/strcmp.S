@@ -1,11 +1,13 @@
 	[BITS 64]  		; Obligatoire
 
-	global ostrcmp 	;  initialize the name of the function Obligatoire
+	global my_strcmp 	;  initialize the name of the function Obligatoire
 	section .text 	; // set the .text Obligatoire
 
-ostrcmp:
+my_strcmp:
 	push rbp 	; initialize the stack
 	mov rbp, rsp 	; initialize the pointer of the stack
+	mov rax, 0
+	mov rbx, 0
 
 loop:
 	mov al, [rdi] 	; assign cl (register) with the first parameter of the function
@@ -25,7 +27,6 @@ loop:
 	jmp loop	; call loop (recursive)
 
 end:
-	sub al, bl	; substract the value of the 2nd operand to the value of the 1st operand
-	movsx rax, al	; assign cl to rax
+	sub rax, rbx	; substract the value of the 2nd operand to the value of the 1st operand
 	leave		; free the stack
 	ret		; return obligatoire

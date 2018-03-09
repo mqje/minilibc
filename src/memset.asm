@@ -1,9 +1,9 @@
 	[BITS 64]               	; Obligatoire
 
-	global omemset  ;  initialize the name of the function Obligatoire
+	global my_memset  ;  initialize the name of the function Obligatoire
 	section .text   ; // set the .text Obligatoire
 
-omemset:
+my_memset:
 	push rbp        ; Initialize stack
 	mov rbp, rsp    ; Initialize stack
 	mov r14, rdi
