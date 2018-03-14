@@ -1,9 +1,9 @@
         [BITS 64]               ; Obligatoire
 
-	global my_memmove	;  initialize the name of the function Obligatoire
+	global memmove	;  initialize the name of the function Obligatoire
 	section .text	; // set the .text Obligatoire
 
-my_memmove:
+memmove:
 	push rbp        ; Initialize stack
 	mov rbp, rsp    ; Initialize stack
 	

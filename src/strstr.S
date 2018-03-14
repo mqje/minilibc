@@ -1,37 +1,46 @@
         [BITS 64]
-	global my_strstr
+	global strstr
 	section .text
 
-my_strstr:
+strstr:
 	push rbp
 	mov rbp, rsp
-	xor rcx, rcx
-	xor rax, rax
+	mov r14, rdi
+
+	
+	cmp byte[r14], 0
+	je my_first_end
+
+	cmp rsi, 0
+	je end_null
+
 
 loop:
-	cmp byte[rdi + rcx], 0
+	cmp byte[r14], 0
 	je end_null
-	
-	mov rax, 0
-	
-other_loop:
-	mov r14, rcx
-	add r14, rax
-	mov bl, byte[rsi + rax]
-	cmp byte[rdi + r14], bl
-	jne end_loop
-	mov r14, rax
-	inc r14
-	cmp byte[rsi + r14], 0
-	je end
-	inc rax
-	jmp other_loop
 
-end_loop:	
-	inc rcx
+	mov r15, rsi
+	
+	other_loop:
+		mov bl, [r14]
+	
+		cmp byte[r15], 0
+		je end
+	
+		cmp byte[r15], bl
+		jne end_loop
+	
+		inc r14
+		inc r15
+		jmp other_loop
+
+end_loop:
+	inc rdi
+	mov r14, rdi
 	jmp loop
 	
-	
+
+
 my_first_end:
 	mov rax, rdi
 	leave
@@ -43,6 +52,6 @@ end_null:
 	ret
 
 end:
-	movsx rax, byte[rdi + rcx] 
+	mov rax, rdi
 	leave
 	ret

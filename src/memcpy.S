@@ -1,9 +1,9 @@
 	[BITS 64]		; Obligatoire
 
-	global my_memcpy  	;  initialize the name of the function Obligatoire
+	global memcpy  	;  initialize the name of the function Obligatoire
 	section .text   	; // set the .text Obligatoire
 
-my_memcpy:
+memcpy:
 	push rbp        ; Initialize stack
 	mov rbp, rsp	; Initialize stack
 	mov r14, rdi

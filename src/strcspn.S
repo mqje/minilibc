@@ -11,22 +11,24 @@ my_strcspn:
 loop:
 	cmp byte[r14], 0
 	je end
+	
 	mov r15, rsi
 	
-other_loop:
-	cmp r15, 0
-	je end_loop
+	other_loop:
+		cmp byte[r15], 0
+		je end_loop
 
-	mov bl, [r14]
+		mov bl, [r14]
 
-	inc r15
 	
-	cmp bl, [r15]
-	je end
+		cmp bl, [r15]
+		je end
+		inc r15
 	
-	jmp other_loop
+		jmp other_loop
 
-end_loop:	
+	end_loop:
+	
 	inc r14
 	inc rcx	
 	jmp loop
