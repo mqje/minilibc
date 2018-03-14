@@ -1,9 +1,9 @@
 	[BITS 64]  		; Obligatoire
 
-	global my_strcmp 	;  initialize the name of the function Obligatoire
+	global strcmp 	;  initialize the name of the function Obligatoire
 	section .text 	; // set the .text Obligatoire
 
-my_strcmp:
+strcmp:
 	push rbp 	; initialize the stack
 	mov rbp, rsp 	; initialize the pointer of the stack
 	mov rax, 0

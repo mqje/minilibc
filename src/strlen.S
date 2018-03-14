@@ -1,9 +1,9 @@
 	[BITS 64]  		; Obligatoire
 
-	global my_strlen 		;  initialize the name of the function Obligatoire 
+	global strlen 		;  initialize the name of the function Obligatoire 
 	section .text 		; set the .text Obligatoire 
 
-my_strlen:
+strlen:
 	push rbp 		; initialize the stack
 	mov rbp, rsp 		; initialize the pointer of the stack
 	mov rcx, 0 		; set our incrementeur to 0

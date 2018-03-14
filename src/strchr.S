@@ -1,9 +1,9 @@
         [BITS 64]               ; Obligatoire
 
-	global my_strchr  ;  initialize the name of the function Obligatoire
+	global strchr  ;  initialize the name of the function Obligatoire
 	section .text   ; // set the .text Obligatoire
 
-my_strchr:
+strchr:
 	push rbp	; Initialize stack
 	mov rbp, rsp 	; Initialize stack
 
