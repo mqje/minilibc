@@ -5,7 +5,7 @@
 my_strcspn:
 	push rbp
 	mov rbp, rsp
-	mov r14, rdi 		;set a pointer to str
+	mov r14, rdi
 	mov rcx, 0
 
 loop:
@@ -18,11 +18,12 @@ other_loop:
 	je end_loop
 
 	mov bl, [r14]
+
+	inc r15
 	
 	cmp bl, [r15]
 	je end
 	
-	inc r15
 	jmp other_loop
 
 end_loop:	
