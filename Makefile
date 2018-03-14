@@ -1,55 +1,49 @@
-NAME		=	libasm.so
+DIR             =	src
 
-DIR		    =	src
+SRCS            =       memcpy.S         \
+                        memset.S         \
+                        memmove.S        \
+                        rindex.S         \
+                        strcasecmp.S     \
+                        strchr.S         \
+                        strcmp.S         \
+                        strlen.S         \
+                        strncmp.S        \
+                        strcspn.S        \
+                        strpbrk.S        \
+                        strstr.S
 
-SRCS		=	test.S
-# $(DIR)/memcpy.S		\
-# 			$(DIR)/memset.S		\
-# 			$(DIR)/memmove.S	\
-# 			$(DIR)/rindex.S		\
-# 			$(DIR)/strcasecmp.S	\
-# 			$(DIR)/strchr.S		\
-# 			$(DIR)/strcmp.S		\
-# 			$(DIR)/strcpy.S		\
-# 			$(DIR)/strcspn.S	\
-# 			$(DIR)/strlen.S		\
-# 			$(DIR)/strnlen.S	\
-# 			$(DIR)/strncmp.S	\
-# 			$(DIR)/strncpy.S	\
-# 			$(DIR)/strpbrk.S	\
-# 			$(DIR)/strspn.S		\
-# 			$(DIR)/strstr.S
 
-ASMFLAGS	=	-f elf64
+LD      = ld
 
-LDFLAGS		=	-shared
+LDFLAGS = -shared
 
-ASM		=	nasm
+ASM     = nasm
 
-LD		=	gcc
+ASFLAGS = -f elf64
 
-RM		=	rm -f
+RM      = rm -f
 
-OBJS		=	$(SRCS:.S=.o)
+NAME    = libasm.so
 
-%.o: %.S
-		@printf "[\033[0;32mcompiled\033[0m] % 29s\n" $< | tr ' ' '.'
-		@$(ASM) -o $@ $< $(ASMFLAGS)
+OBJS    = $(SRCS:.S=.o)
 
-all:		$(NAME)
 
-$(NAME):	$(OBJS)
-		@$(LD) $(LDFLAGS) -o $(NAME) $(OBJS)
-		@printf "[\033[0;36mbuilt\033[0m] % 32s\n" $(NAME) | tr ' ' '.'
+all: $(NAME)
+
+%.o:    %.asm
+	$(ASM) $(ASFLAGS) $< -o $@
+
+$(NAME): $(OBJS)
+	$(LD) $(LDFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-		@$(RM) $(OBJS)
-		@printf "[\033[0;31mdeleted\033[0m] % 30s\n" $(OBJS) | tr ' ' '.'
+	$(RM) $(OBJS)
 
-fclean:		clean
-		@$(RM) $(NAME)
-		@printf "[\033[0;31mdeleted\033[0m] % 30s\n" $(NAME) | tr ' ' '.'
+fclean: clean
+	$(RM) $(NAME)
 
-re:		fclean all
+re: 	fclean all
 
 .PHONY: all clean fclean re
+
