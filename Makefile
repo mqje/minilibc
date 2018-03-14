@@ -1,5 +1,3 @@
-DIR             =	src
-
 SRCS            =       memcpy.S         \
                         memset.S         \
                         memmove.S        \
@@ -13,25 +11,23 @@ SRCS            =       memcpy.S         \
                         strpbrk.S        \
                         strstr.S
 
+OBJS	= $(SRCS:.S=.o)
 
-LD      = ld
+LD	= ld
 
-LDFLAGS = -shared
+LDFLAGS	= -shared
 
-ASM     = nasm
+ASM	= nasm
 
-ASFLAGS = -f elf64
+ASFLAGS	= -f elf64
 
-RM      = rm -f
+RM	= rm -f
 
-NAME    = libasm.so
-
-OBJS    = $(SRCS:.S=.o)
-
+NAME	= libasm.so
 
 all: $(NAME)
 
-%.o:    %.asm
+%.o:	%.S
 	$(ASM) $(ASFLAGS) $< -o $@
 
 $(NAME): $(OBJS)
@@ -43,7 +39,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: 	fclean all
+re: fclean all
 
 .PHONY: all clean fclean re
-
