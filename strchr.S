@@ -13,6 +13,9 @@ loop:
 	cmp al, 0       ; compare cl (first) == \0
 	je exit_null	; stop if the compare wor
 
+	cmp sil, 0
+	je end
+
 	cmp al, sil     ; compare the two value of the character stocked in the cl and dl register
 	je end		; if the value are different, go to the end, because its an error
 	

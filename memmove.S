@@ -6,7 +6,16 @@
 memmove:
 	push rbp        ; Initialize stack
 	mov rbp, rsp    ; Initialize stack
-	
+
+	cmp rdx, 0
+	je end
+
+	cmp dil, 0
+	je end
+
+	cmp dil, 0
+	je end
+
 	mov r14, rdi
 	
 	mov bl, [rsi]
