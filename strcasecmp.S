@@ -17,11 +17,13 @@ loop:
 	cmp bl, 0
 	je end_null
 
-	cmp al, 97
-	jl to_lower_a
+	cmp al, 65
+	jge cmp_a
 
-	cmp bl, 97
-	jl to_lower_b
+	cmp bl, 65
+	jge cmp_b
+
+end_loop:	
 	
 	cmp al, bl
 	jne end
@@ -30,14 +32,23 @@ loop:
 	inc rsi
 	jmp check_argument
 
+
+cmp_a:	
+	cmp al, 90
+	jg end_loop
+	
 to_lower_a:
 	add al, 32
 	jmp loop
+
+cmp_b:	
+	cmp bl, 90
+	jg end_loop
 	
 to_lower_b:
 	add bl, 32
 	jmp loop
-	
+
 end_null:
 	mov rax, 0
 	leave
