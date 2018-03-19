@@ -1,5 +1,4 @@
 	[BITS 64]		; Obligatoire
-
 	global memcpy  	;  initialize the name of the function Obligatoire
 	section .text   	; // set the .text Obligatoire
 
