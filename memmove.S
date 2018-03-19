@@ -10,7 +10,7 @@ memmove:
 	cmp rdx, 0
 	je end
 
-	cmp sil, 0
+	cmp rsi, 0
 	je end
 
 	mov r14, rdi
