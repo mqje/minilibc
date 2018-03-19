@@ -9,13 +9,14 @@ strcasecmp:
 check_argument:
 	mov al, [rdi]
 	mov bl, [rsi]
+	cmp bl, 0
 		
 loop:
 	cmp al, 0
-	je end_null
+	je end
 	
 	cmp bl, 0
-	je end_null
+	je end
 
 	cmp al, 65
 	jge cmp_a
