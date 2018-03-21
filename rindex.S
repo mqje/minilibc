@@ -1,11 +1,12 @@
 	[BITS 64]
 	global rindex
-	SECTION .text
+	section .text
 	
 rindex:
 	push rbp
 	mov rbp, rsp
 	mov rdx, 0
+
 loop:
 	cmp byte[rdi + rdx], 0
 	je other_loop

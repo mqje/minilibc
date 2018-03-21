@@ -39,7 +39,7 @@ cmp_a:
 	
 to_lower_a:
 	add al, 32
-	jmp loop
+	jmp middle_loop
 
 cmp_b:	
 	cmp bl, 90

@@ -6,13 +6,12 @@ strstr:
 	push rbp
 	mov rbp, rsp
 	mov r14, rdi
-	
-	cmp byte[r14], 0
-	je end_null
 
-	cmp rsi, 0
-	je end_null
+	cmp byte[rsi], 0
+	je end
 
+	cmp byte[rdi], 0
+	je end_null	
 
 loop:
 	cmp byte[r14], 0

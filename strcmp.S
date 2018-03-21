@@ -1,13 +1,13 @@
 	[BITS 64]  		; Obligatoire
 
 	global strcmp 	;  initialize the name of the function Obligatoire
-	section .text 	; // set the .text Obligatoire
+	section .text 	; set the .text Obligatoire
 
 strcmp:
 	push rbp 	; initialize the stack
 	mov rbp, rsp 	; initialize the pointer of the stack
-	mov rax, 0
-	mov rbx, 0
+	xor rax, rax
+	xor rbx, rbx
 
 loop:
 	mov al, [rdi] 	; assign cl (register) with the first parameter of the function

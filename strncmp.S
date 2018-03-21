@@ -15,10 +15,10 @@ loop:
 	cmp al, bl
 	jne end_null
 
-	cmp al, 0
+	cmp bl, 0
 	je end_null
 	
-	cmp bl, 0
+	cmp al, 0
 	je end_null
 
 	cmp rdx, 1
