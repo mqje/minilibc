@@ -21,11 +21,11 @@ loop:
 	cmp al, 65
 	jge cmp_a
 
+middle_loop:	
 	cmp bl, 65
 	jge cmp_b
 
-end_loop:	
-	
+end_loop:		
 	cmp al, bl
 	jne end
 
@@ -33,10 +33,9 @@ end_loop:
 	inc rsi
 	jmp check_argument
 
-
 cmp_a:	
 	cmp al, 90
-	jg end_loop
+	jg middle_loop
 	
 to_lower_a:
 	add al, 32
