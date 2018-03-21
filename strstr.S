@@ -6,10 +6,9 @@ strstr:
 	push rbp
 	mov rbp, rsp
 	mov r14, rdi
-
 	
 	cmp byte[r14], 0
-	je my_first_end
+	je end_null
 
 	cmp rsi, 0
 	je end_null
@@ -21,7 +20,7 @@ loop:
 
 	mov r15, rsi
 	
-	other_loop:
+        other_loop:
 		mov bl, [r14]
 	
 		cmp byte[r15], 0

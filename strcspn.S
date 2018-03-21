@@ -1,41 +1,34 @@
 	[BITS 64]
 	global strcspn
 	section .text
-
+	
 strcspn:
-	push rbp
-	mov rbp, rsp
-	mov r14, rdi
+	mov rdx, 0
 	mov rcx, 0
 
 loop:
-	cmp byte[r14], 0
-	je end
-	
-	mov r15, rsi
-	
-	other_loop:
-		cmp byte[r15], 0
-		je end_loop
+	cmp byte[rdi + rdx], 0
+	je endloop
 
-		mov bl, [r14]
+	jmp subloop
 
-	
-		cmp bl, [r15]
-		je end
-		inc r15
-	
-		jmp other_loop
+subloop:
+	mov al, [rsi + rcx]
 
-	end_loop:
-	
-	inc r14
-	inc rcx	
+	cmp al, 0
+	je end_subloop
+
+	cmp al, [rdi + rdx]
+	je endloop
+
+	inc rcx
+	jmp subloop
+
+end_subloop:
+	inc rdx
+	mov rcx, 0
 	jmp loop
 
-end:
-	mov rax, rcx
-	leave
+endloop:
+	mov rax, rdx
 	ret
-	
-	
