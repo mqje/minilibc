@@ -8,24 +8,24 @@ strcasecmp:
 
 check_argument:
 	mov al, [rdi]
-	mov bl, [rsi]
+	mov r14b, [rsi]
 		
 loop:
 	cmp al, 0
 	je end
 	
-	cmp bl, 0
+	cmp r14b, 0
 	je end
 
 	cmp al, 65
 	jge cmp_a
 
 middle_loop:	
-	cmp bl, 65
+	cmp r14b, 65
 	jge cmp_b
 
 end_loop:
-	cmp al, bl
+	cmp al, r14b
 	jne end
 
 	inc rdi
@@ -41,11 +41,11 @@ to_lower_a:
 	jmp loop
 
 cmp_b:	
-	cmp bl, 90
+	cmp r14b, 90
 	jg end_loop
 	
 to_lower_b:
-	add bl, 32
+	add r14b, 32
 	jmp loop
 
 end_null:
@@ -54,6 +54,6 @@ end_null:
 	ret
 
 end:
-	sub rax, rbx
+	sub rax, r14
 	leave
 	ret
