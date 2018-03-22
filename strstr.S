@@ -36,8 +36,6 @@ end_loop:
 	inc rdi
 	mov r14, rdi
 	jmp loop
-	
-
 
 my_first_end:
 	mov rax, rdi
