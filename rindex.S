@@ -27,9 +27,11 @@ other_loop:
 end:
 	add rdi, rdx
 	mov rax, rdi
+	leave
 	ret
 
 end_null:
 	mov rax, 0
+	leave
 	ret
 	
