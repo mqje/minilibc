@@ -9,8 +9,11 @@ read:
 
 	mov rax, 0
 	syscall
+
+if_success:	
 	cmp rax, 0
 	jge end
+else:	
 	neg rax
 	push rax
 	call __errno_location wrt ..plt
