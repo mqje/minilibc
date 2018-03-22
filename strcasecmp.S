@@ -9,7 +9,6 @@ strcasecmp:
 check_argument:
 	mov al, [rdi]
 	mov bl, [rsi]
-	cmp bl, 0
 		
 loop:
 	cmp al, 0
@@ -25,7 +24,7 @@ middle_loop:
 	cmp bl, 65
 	jge cmp_b
 
-end_loop:		
+end_loop:
 	cmp al, bl
 	jne end
 
@@ -39,7 +38,7 @@ cmp_a:
 	
 to_lower_a:
 	add al, 32
-	jmp middle_loop
+	jmp loop
 
 cmp_b:	
 	cmp bl, 90
