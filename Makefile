@@ -9,8 +9,9 @@ SRCS            =       memcpy.S         \
                         strncmp.S        \
                         strcspn.S        \
                         strpbrk.S        \
-                        strstr.S
-
+                        strstr.S	 \
+			read.S		 \
+			write.S
 OBJS	= $(SRCS:.S=.o)
 
 LD	= ld
