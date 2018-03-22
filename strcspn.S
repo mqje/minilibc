@@ -3,32 +3,32 @@
 	section .text
 	
 strcspn:
-	mov rdx, 0
+	xor rdx, rdx
 	mov rcx, 0
 
 loop:
 	cmp byte[rdi + rdx], 0
-	je endloop
+	je end
 
-	jmp subloop
+	jmp second_loop
 
-subloop:
+second_loop:
 	mov al, [rsi + rcx]
 
 	cmp al, 0
-	je end_subloop
+	je end_loop
 
 	cmp al, [rdi + rdx]
-	je endloop
-
+	je end
+	
 	inc rcx
-	jmp subloop
+	jmp second_loop
 
-end_subloop:
+end_loop:
 	inc rdx
 	mov rcx, 0
 	jmp loop
 
-endloop:
+end:
 	mov rax, rdx
 	ret
